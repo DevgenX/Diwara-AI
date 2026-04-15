@@ -7,7 +7,7 @@ const steps = [
   {
     num: "02",
     title: "Ask for help",
-    body: "Ask a question by chat or voice, or copy text when you want a simple explanation.",
+    body: "Open the side chat, ask by text or voice, or copy text when you want a simple explanation.",
   },
   {
     num: "03",

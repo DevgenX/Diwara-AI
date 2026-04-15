@@ -34,14 +34,14 @@ const _legacyMetadata: Metadata = {
 export const metadata: Metadata = {
   title: "Diwara AI | AI help that stays on your screen",
   description:
-    "Diwara AI helps people ask questions, explain copied text, and follow simple on-screen guidance without losing their place.",
+    "Diwara AI includes a built-in side chat window where users can talk to the AI, explain copied text, and get on-screen guidance without switching tabs.",
   icons: {
     icon: "/icon.svg",
   },
   openGraph: {
     title: "Diwara AI | AI help that stays on your screen",
     description:
-      "Ask questions, copy text for a simple explanation, and get guided help right on screen with Diwara AI.",
+      "Talk to the AI in a built-in side chat window, explain copied text, and get guided help right on screen with Diwara AI.",
     type: "website",
   },
 };

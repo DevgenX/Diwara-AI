@@ -2,7 +2,7 @@ import StudyBuddyCursorTriangle from "@/components/StudyBuddyCursorTriangle";
 import Link from "next/link";
 
 const highlightItems = [
-  "Chat or talk without switching tabs",
+  "Built-in AI chat without switching tabs",
   "Learn apps and tools step by step",
   "Copy text, then press explain",
   "Get help while you stay on task",
@@ -30,10 +30,11 @@ export default function MarketingHero() {
           </h1>
 
           <p className="section-copy mt-6 max-w-2xl text-base sm:text-lg">
-            Diwara AI is an AI assistant you can chat with, talk to, and use
-            while you study or work. It helps you understand lessons, learn
-            video editors and other apps, follow steps on screen, and get
-            answers without switching tabs.
+            Diwara AI features a built-in side chat window where users can talk
+            to the AI without leaving their workflow. It delivers a
+            ChatGPT-like experience inside the app, making it easy to ask
+            questions, explain copied text, and get on-screen guidance without
+            switching tabs.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
