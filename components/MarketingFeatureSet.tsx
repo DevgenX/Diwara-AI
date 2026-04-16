@@ -212,11 +212,11 @@ function DemoShell({
 }) {
   return (
     <div className="overflow-hidden rounded-[1.8rem] border border-indigo-glow bg-[#08111d] shadow-[0_30px_90px_rgba(2,10,22,0.45)]">
-      <div className="flex items-center gap-2 border-b border-white/8 bg-[#111d2d] px-4 py-3">
+      <div className="flex flex-wrap items-center gap-2 border-b border-white/8 bg-[#111d2d] px-3 py-3 sm:px-4">
         <span className="h-2.5 w-2.5 rounded-full bg-[#f87171]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#fbbf24]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#34d399]" />
-        <div className="ml-3 rounded-full bg-white/5 px-3 py-1 text-xs text-muted">
+        <div className="min-w-0 rounded-full bg-white/5 px-3 py-1 text-[10px] text-muted sm:ml-3 sm:text-xs">
           {title}
         </div>
       </div>
@@ -276,7 +276,7 @@ function StudyDemo() {
   const showBubble = phase >= 3;
 
   return (
-    <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-[#0c1524] via-[#0f1a2d] to-[#0a1220]">
+    <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-[#0c1524] via-[#0f1a2d] to-[#0a1220] sm:aspect-video">
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -286,7 +286,7 @@ function StudyDemo() {
         }}
       />
 
-      <div className="absolute left-4 top-4 right-[28%] space-y-2 sm:left-6 sm:top-6 sm:right-44">
+      <div className="absolute left-4 top-4 right-4 space-y-2 sm:left-6 sm:top-6 sm:right-44">
         <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#83a8c7] sm:text-xs">
           Biology notes
         </div>
@@ -328,7 +328,7 @@ function StudyDemo() {
       />
 
       {showBubble && (
-        <div className="prompt-bubble absolute right-[6%] top-[10%] z-10 max-w-[220px] rounded-2xl rounded-tr-md px-3 py-3 text-left text-[10px] leading-relaxed text-white/90 sm:text-xs">
+        <div className="prompt-bubble absolute left-4 right-4 top-[58%] z-10 rounded-2xl rounded-tr-md px-3 py-3 text-left text-[10px] leading-relaxed text-white/90 sm:left-auto sm:right-[6%] sm:top-[10%] sm:max-w-[220px] sm:text-xs">
           {studyWords.slice(0, wordIdx + 1).join(" ")}
           {phase === 3 && (
             <span className="ml-1 inline-block h-3 w-0.5 animate-pulse bg-accent align-middle" />
@@ -445,8 +445,8 @@ function VideoDemo() {
   const showLetterbox = phase >= 3;
 
   return (
-    <div className="relative aspect-video overflow-hidden bg-[#0d1420]">
-      <div className="absolute inset-0 right-0 sm:right-[34%]">
+    <div className="relative aspect-[4/5] overflow-hidden bg-[#0d1420] sm:aspect-video">
+      <div className="absolute left-0 right-0 top-0 bottom-[28%] sm:inset-0 sm:right-[34%]">
         <div
           className={`absolute inset-0 transition-all duration-1000 ${
             showLut
@@ -489,6 +489,29 @@ function VideoDemo() {
         <div className={`absolute bottom-0 left-0 right-0 bg-black ${showLetterbox ? "h-[12%]" : "h-0"} transition-all duration-700`} />
 
         <div className="absolute bottom-0 left-0 right-0 h-6 border-t border-white/5 bg-[#0a0a18]" />
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 grid h-[28%] grid-cols-2 gap-2 border-t border-white/5 bg-[#111120]/95 p-3 sm:hidden">
+        {[
+          { id: "color", label: "Color tools" },
+          { id: "lut", label: "Film look" },
+          { id: "letterbox", label: "Cinema bars" },
+          { id: "grain", label: "Film grain" },
+        ].map(({ id, label }) => {
+          const isActive = current?.highlight === id;
+          return (
+            <div
+              key={id}
+              className={`rounded-xl border px-3 py-2 text-xs transition-all ${
+                isActive
+                  ? "border-accent/40 bg-accent/10 text-accent2"
+                  : "border-white/8 bg-white/[0.03] text-white/60"
+              }`}
+            >
+              {label}
+            </div>
+          );
+        })}
       </div>
 
       <div className="absolute bottom-0 right-0 top-0 hidden w-[34%] flex-col border-l border-white/5 bg-[#111120] sm:flex">
@@ -534,7 +557,7 @@ function VideoDemo() {
       )}
 
       {isPlaying && (
-        <div className="absolute bottom-8 left-3 z-10 max-w-[58%] rounded-2xl rounded-bl-md border border-accent/20 bg-[#1c2740]/90 px-3 py-2 text-[10px] text-white/85 sm:bottom-10 sm:text-xs">
+        <div className="absolute bottom-[31%] left-3 right-20 z-10 rounded-2xl rounded-bl-md border border-accent/20 bg-[#1c2740]/90 px-3 py-2 text-[10px] text-white/85 sm:bottom-10 sm:right-auto sm:max-w-[58%] sm:text-xs">
           {videoQuestion.slice(0, questionIdx + 1).join("")}
           {phase === 0 && (
             <span className="ml-1 inline-block h-3 w-0.5 animate-pulse bg-accent align-middle" />
@@ -543,7 +566,7 @@ function VideoDemo() {
       )}
 
       {isPlaying && phase >= 1 && (
-        <div className="absolute bottom-8 right-3 z-10 max-w-[42%] rounded-2xl rounded-br-md border border-white/10 bg-[#101a2d]/95 px-3 py-2 text-[10px] text-accent2 sm:bottom-10 sm:right-[35%] sm:text-xs">
+        <div className="absolute bottom-[18%] left-12 right-3 z-10 rounded-2xl rounded-br-md border border-white/10 bg-[#101a2d]/95 px-3 py-2 text-[10px] text-accent2 sm:bottom-10 sm:left-auto sm:right-[35%] sm:max-w-[42%] sm:text-xs">
           {videoWords.slice(0, answerIdx + 1).join(" ")}
           {phase === 1 && answerIdx < videoWords.length - 1 && (
             <span className="ml-1 inline-block h-3 w-0.5 animate-pulse bg-accent align-middle" />
@@ -641,8 +664,8 @@ function ExplainDemo() {
   const isPlaying = phase >= 0;
 
   return (
-    <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-[#0c1524] via-[#10192a] to-[#091220]">
-      <div className="absolute left-4 top-4 right-4 rounded-[1.6rem] border border-white/8 bg-[#0b1524]/90 p-4 sm:left-6 sm:right-[42%] sm:top-6 sm:p-5">
+    <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-[#0c1524] via-[#10192a] to-[#091220] sm:aspect-video">
+      <div className="absolute left-4 right-4 top-4 rounded-[1.6rem] border border-white/8 bg-[#0b1524]/90 p-4 sm:left-6 sm:right-[42%] sm:top-6 sm:p-5">
         <div className="tiny-kicker">Article</div>
         <div className="mt-4 space-y-2">
           <div className="h-2 rounded-full bg-white/10" />
@@ -656,7 +679,7 @@ function ExplainDemo() {
         </div>
       </div>
 
-      <div className="absolute right-4 top-4 rounded-[1.6rem] border border-white/8 bg-[#101a2d]/92 p-4 sm:right-6 sm:top-6 sm:w-[34%]">
+      <div className="absolute left-4 right-4 top-[42%] rounded-[1.6rem] border border-white/8 bg-[#101a2d]/92 p-4 sm:left-auto sm:right-6 sm:top-6 sm:w-[34%]">
         <div className="tiny-kicker">Copy and explain</div>
         <div className="mt-4 rounded-2xl border border-accent3/20 bg-accent3/10 px-3 py-2 text-xs text-[#f7d48a]">
           Copied text
@@ -788,7 +811,7 @@ export default function MarketingFeatureSet() {
           )}
         </div>
 
-        <div className="mt-16 grid gap-5 text-left md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-16 grid gap-5 text-left sm:grid-cols-2 xl:grid-cols-4">
           {featureCards.map(({ icon, title, body }) => (
             <article
               key={title}
