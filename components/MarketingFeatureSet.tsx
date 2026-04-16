@@ -90,20 +90,22 @@ const videoSteps = [
   { buddyX: 81, buddyY: 63, highlight: "grain", label: "done" },
 ];
 
-const videoQuestion = "How do I make this video look more cinematic?".split("");
+const videoQuestion = "How can I make this video more cinematic?".split("");
 const videoWords = [
-  "Try",
-  "three",
-  "simple",
-  "steps:",
-  "add",
+  "Start",
+  "with",
+  "color",
+  "tools,",
+  "apply",
   "a",
   "film",
   "look,",
   "add",
+  "cinema",
   "bars,",
   "then",
-  "add",
+  "finish",
+  "with",
   "a",
   "little",
   "grain.",
@@ -216,7 +218,7 @@ function DemoShell({
         <span className="h-2.5 w-2.5 rounded-full bg-[#f87171]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#fbbf24]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#34d399]" />
-        <div className="min-w-0 rounded-full bg-white/5 px-3 py-1 text-[10px] text-muted sm:ml-3 sm:text-xs">
+        <div className="min-w-0 max-w-full rounded-full bg-white/5 px-3 py-1 text-[10px] leading-tight text-muted sm:ml-3 sm:text-xs">
           {title}
         </div>
       </div>
@@ -599,7 +601,7 @@ function VideoDemo() {
             </svg>
           </div>
           <span className="text-sm font-medium text-white/80">
-            Play video help demo
+            Play video editor assistant demo
           </span>
         </button>
       )}
@@ -792,8 +794,8 @@ export default function MarketingFeatureSet() {
                 <VideoDemo />
               </DemoShell>
               <p className="section-copy mt-4 text-sm">
-                Ask how to do something in a video editor, then follow the
-                steps on screen.
+                Ask how to make a video more cinematic, then watch the AI teach
+                the steps on screen.
               </p>
             </>
           )}
