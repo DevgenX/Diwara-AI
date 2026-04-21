@@ -11,11 +11,13 @@ export default function MarketingCta() {
           <div className="relative">
             <p className="eyebrow mb-4">Get started</p>
             <h2 className="mx-auto max-w-3xl text-3xl font-extrabold tracking-[-0.04em] text-white md:text-4xl">
-              Start free, go Pro, or talk to us about Enterprise.
+              Make everyday digital work feel smoother, lighter, and easier to
+              finish.
             </h2>
             <p className="section-copy mx-auto mt-4 max-w-2xl text-base">
-              Whether you want personal help every day or rollout information
-              for a larger team, Diwara AI can fit the way you work.
+              From quick answers to full guided workflows, Diwara helps reduce
+              friction, shorten repetitive tasks, and keep your best routine
+              closer at hand.
             </p>
           </div>
 
@@ -33,10 +35,10 @@ export default function MarketingCta() {
               Compare plans
             </Link>
             <Link
-              href="#pricing"
+              href="#features"
               className="button-secondary inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all sm:w-auto"
             >
-              Contact us for Enterprise
+              See how it works
             </Link>
           </div>
         </div>

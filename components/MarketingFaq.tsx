@@ -5,31 +5,31 @@ import { useState } from "react";
 const faqs = [
   {
     q: "What is Diwara AI in simple words?",
-    a: "It is an AI helper that stays on your screen while you work or study. You use shortcut keys to open features, ask questions, copy text for an explanation, or follow on-screen guidance.",
+    a: "Diwara AI is an assistant that stays close to your work, helps you understand what is on screen, and takes the repetitive digital steps that usually slow the day down.",
   },
   {
     q: "How do I ask for help?",
-    a: "You usually start by pressing a shortcut key. From there, you can type a question, speak out loud, or use the explain feature after copying text.",
+    a: "Use the voice flow and say what you need. Diwara can answer a question, move you through the screen faster, or help carry out a task from start to finish.",
   },
   {
-    q: "What is copy and explain?",
-    a: "Copy a word, sentence, or paragraph, then press the explain shortcut. Diwara AI will explain it in plain language. This is useful when something sounds too technical or too long.",
+    q: "How does it simplify everyday tasks?",
+    a: "It reduces clicking, context switching, repeated setup, and the small manual steps that make simple tasks feel longer than they should. The result is a smoother flow through research, study, and work.",
   },
   {
-    q: "Can it look at what is on my screen?",
-    a: "Yes. In the full desktop experience, Diwara AI can use what is on screen to answer with better context and point to the right place.",
+    q: "Can it still see what is on my screen?",
+    a: "Yes. Screen context is a core part of the experience. Diwara uses what is visible to guide answers, locate targets, and choose the next useful action.",
   },
   {
-    q: "Does it talk back?",
-    a: "Yes. Diwara AI can speak the answer out loud if you want voice help.",
+    q: "Does it pause before sensitive actions?",
+    a: "Yes. Diwara uses approval checks before certain risky actions so the experience stays useful, but still feels safe and deliberate.",
   },
   {
-    q: "What do I get with Free, Pro, and Enterprise?",
-    a: "Free is for trying the product. Pro unlocks more usage and the full desktop helper. Enterprise is for teams that want custom pricing and rollout help.",
+    q: "Can it help across multiple apps and monitors?",
+    a: "Yes. Diwara can set up study sessions across apps, save the layout as a preset, reload it later, and help place windows across multiple screens when needed.",
   },
   {
-    q: "Do I need technical skills to use it?",
-    a: "No. The page and the product are designed to use simple language. You ask, Diwara AI helps, and you keep going.",
+    q: "Who is it for?",
+    a: "It is built for students, knowledge workers, and anyone who spends long stretches moving between reading, researching, writing, reviewing, and repeating the same digital routines.",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function MarketingFaq() {
         <div className="text-center">
           <p className="eyebrow mb-4">FAQ</p>
           <h2 className="text-3xl font-extrabold tracking-[-0.04em] text-white md:text-5xl">
-            Common questions, answered simply.
+            Clear answers for the questions people actually ask.
           </h2>
         </div>
 

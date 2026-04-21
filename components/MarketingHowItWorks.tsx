@@ -1,23 +1,23 @@
 const steps = [
   {
     num: "01",
-    title: "Open Diwara AI",
-    body: "Use a shortcut to open the assistant. It stays on screen so you can keep doing your work.",
+    title: "Start in seconds",
+    body: "Open Diwara and ask for help right where you already are. No tool-switching ritual, no setup maze, no lost momentum.",
   },
   {
     num: "02",
-    title: "Ask for help",
-    body: "Open the side chat, ask by text or voice, or copy text when you want a simple explanation.",
+    title: "Say what you need",
+    body: "Ask a question, give a command, or request a full workflow. Diwara understands whether you need explanation, movement, or action.",
   },
   {
     num: "03",
-    title: "Get on-screen guidance",
-    body: "Diwara AI can look at what is on screen, point to the right place, and guide you step by step.",
+    title: "Let Diwara handle the friction",
+    body: "It can inspect the screen, take the next step, guide you visually, and keep the task moving without turning simple work into mental overhead.",
   },
   {
     num: "04",
-    title: "Keep moving",
-    body: "Read the answer, hear it out loud, and keep learning or working without switching tabs.",
+    title: "Keep the progress",
+    body: "Save setups, revisit sessions, and return to the same productive flow without rebuilding it from scratch every time.",
   },
 ];
 
@@ -27,11 +27,12 @@ export default function MarketingHowItWorks() {
       <div className="mx-auto max-w-7xl text-center">
         <p className="eyebrow mb-4">How it works</p>
         <h2 className="text-3xl font-extrabold tracking-[-0.04em] text-white md:text-5xl">
-          Built for everyday learning and work.
+          Built to remove friction from everyday digital work.
         </h2>
         <p className="section-copy mx-auto mt-4 max-w-2xl text-base sm:text-lg">
-          You do not need extra tools or long setup. Open Diwara AI, ask for
-          help, and stay focused on what you are doing.
+          From quick answers to full study routines, Diwara keeps the flow
+          simple: understand the task, reduce the busywork, and help you move
+          forward without breaking concentration.
         </p>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">

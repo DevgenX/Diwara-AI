@@ -277,3 +277,14 @@ kbd {
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  body::before {
+    background-size: 56px 56px;
+  }
+
+  .section-shell::after {
+    bottom: -2.4rem;
+    width: calc(100vw - 2rem);
+  }
+}

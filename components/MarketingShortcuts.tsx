@@ -1,23 +1,33 @@
 const shortcuts = [
   {
-    keys: "Ctrl + Alt + C",
-    title: "Show or hide Diwara AI",
-    body: "Open or close the assistant without leaving your screen.",
+    keys: "Command",
+    title: '"Open Chrome and search for mitosis"',
+    body: "Skip the tiny steps. Diwara can open the app, move to the right place, and get the task going before momentum fades.",
   },
   {
-    keys: "Ctrl + Alt + Space",
-    title: "Talk with your voice",
-    body: "Hold this when you want to speak instead of type.",
+    keys: "Speed",
+    title: '"Scroll down" or "next tab"',
+    body: "Move through pages, PDFs, and browser tabs with quick voice controls that keep reading and review sessions smooth.",
   },
   {
-    keys: "Ctrl + Shift + E",
-    title: "Explain copied text",
-    body: "Copy or highlight text first, then press this to get a simple explanation.",
+    keys: "Clarity",
+    title: '"Highlight the key terms in this paragraph"',
+    body: "Turn busy screens into clear next steps with on-screen callouts, labels, and numbered guidance.",
   },
   {
-    keys: "Ctrl + Alt + E",
-    title: "Explain with more context",
-    body: "Use this when you want a deeper explanation based on what is on screen.",
+    keys: "Research",
+    title: '"Research the causes of World War I"',
+    body: "Let Diwara gather sources, summarize the essentials, and bring back the answer without sending you down a tab spiral.",
+  },
+  {
+    keys: "Routine",
+    title: '"Save this as my bio setup"',
+    body: "Capture the exact workspace that works for you, then bring it back whenever you want a fast start.",
+  },
+  {
+    keys: "Review",
+    title: '"Replay my last study session"',
+    body: "Look back at what happened, what you clicked, and what was explained, so progress feels easier to repeat.",
   },
 ];
 
@@ -26,17 +36,18 @@ export default function MarketingShortcuts() {
     <section className="section-shell px-6 py-16 md:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 text-center">
-          <p className="eyebrow mb-4">Popular shortcuts</p>
+          <p className="eyebrow mb-4">Popular commands</p>
           <h2 className="text-3xl font-extrabold tracking-[-0.04em] text-white md:text-5xl">
-            Open features with a few keys.
+            Say the task. Keep your hands on what matters.
           </h2>
           <p className="section-copy mx-auto mt-4 max-w-2xl text-base sm:text-lg">
-            These are the default shortcut keys. You can change them in
-            settings and set them however you want.
+            Diwara is built for everyday momentum. The command layer helps you
+            move faster through reading, browsing, setup, revision, and the
+            repetitive digital tasks that usually slow the day down.
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {shortcuts.map(({ keys, title, body }) => (
             <article
               key={title}

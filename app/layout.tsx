@@ -16,32 +16,17 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const _legacyMetadata: Metadata = {
-  title: "Diwara AI — Your AI screen companion",
-  description:
-    "Diwara AI is an AI helper that stays on your screen, follows your flow, and explains what you are looking at without breaking your focus.",
-  icons: {
-    icon: "/icon.svg",
-  },
-  openGraph: {
-    title: "Diwara AI — Your AI screen companion",
-    description:
-      "A friendly AI helper that stays on your screen, understands your context, and helps in real time.",
-    type: "website",
-  },
-};
-
 export const metadata: Metadata = {
-  title: "Diwara AI | AI help that stays on your screen",
+  title: "Diwara | Voice-command your desktop workflow",
   description:
-    "Diwara AI includes a built-in side chat window where users can talk to the AI, explain copied text, and get on-screen guidance without switching tabs.",
+    "Diwara is a desktop AI companion that can act on your computer, navigate instantly, annotate the screen, research, run flashcard sessions, start practice exams, save presets, and replay study sessions.",
   icons: {
     icon: "/icon.svg",
   },
   openGraph: {
-    title: "Diwara AI | AI help that stays on your screen",
+    title: "Diwara | Voice-command your desktop workflow",
     description:
-      "Talk to the AI in a built-in side chat window, explain copied text, and get guided help right on screen with Diwara AI.",
+      "Voice-command actions, instant navigation, live annotations, research, coding help, presets, exams, replay, and multi-monitor study workflows in one desktop assistant.",
     type: "website",
   },
 };

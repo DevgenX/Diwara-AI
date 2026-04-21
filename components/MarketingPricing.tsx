@@ -4,9 +4,10 @@ const comparisonRows = [
   { label: "Questions each day", free: "20", pro: "Unlimited", enterprise: "Unlimited" },
   { label: "Voice help", free: "5 min/day", pro: "Unlimited", enterprise: "Unlimited" },
   { label: "Copy and explain", free: true, pro: true, enterprise: true },
-  { label: "Screen-aware help", free: false, pro: true, enterprise: true },
-  { label: "Desktop helper", free: false, pro: true, enterprise: true },
-  { label: "Browser support", free: true, pro: true, enterprise: true },
+  { label: "Voice-commanded actions", free: false, pro: true, enterprise: true },
+  { label: "Instant navigation + annotation", free: false, pro: true, enterprise: true },
+  { label: "Research, homework, and coding modes", free: false, pro: true, enterprise: true },
+  { label: "Presets, replay, and multi-monitor tools", free: false, pro: true, enterprise: true },
   { label: "Priority support", free: false, pro: true, enterprise: true },
   { label: "Team rollout help", free: false, pro: false, enterprise: true },
 ];
@@ -23,11 +24,12 @@ export default function MarketingPricing() {
       <div className="mx-auto max-w-7xl text-center">
         <p className="eyebrow mb-4">Pricing</p>
         <h2 className="text-3xl font-extrabold tracking-[-0.04em] text-white md:text-5xl">
-          Simple plans for individuals and teams.
+          Start simple. Upgrade when the time savings matter.
         </h2>
         <p className="section-copy mx-auto mt-4 max-w-2xl text-base sm:text-lg">
-          Start with the free tier. Upgrade when you want more questions, more
-          voice time, and the full desktop experience.
+          Diwara is useful on day one, and it grows with the way you work. Use
+          the free plan to get started, then unlock deeper automation,
+          structured workflows, and faster repeatability when you are ready.
         </p>
 
         <div className="mt-14 grid gap-6 text-left lg:grid-cols-3">
@@ -38,7 +40,8 @@ export default function MarketingPricing() {
               <span className="ml-2 text-base font-medium text-muted">/mo</span>
             </div>
             <p className="section-copy mt-4 text-sm">
-              A simple place to start if you want to try Diwara AI.
+              Perfect for trying the flow and getting quick help without
+              changing your routine.
             </p>
             <Link
               href="#contact"
@@ -66,7 +69,8 @@ export default function MarketingPricing() {
               <span className="ml-2 text-base font-medium text-muted">/mo</span>
             </div>
             <p className="section-copy mt-4 text-sm">
-              Best for people who want Diwara AI every day.
+              Built for people who want less friction every day, not just
+              better answers once in a while.
             </p>
             <Link
               href="#contact"
@@ -77,9 +81,9 @@ export default function MarketingPricing() {
             <div className="mt-7 space-y-3 text-sm text-white/90">
               <div>Unlimited questions</div>
               <div>Unlimited voice help</div>
-              <div>Full desktop helper</div>
-              <div>Screen-aware answers and pointing</div>
-              <div>Priority support</div>
+              <div>Desktop actions and instant navigation</div>
+              <div>Research, homework, coding, and flashcards</div>
+              <div>Presets, replay, and exam mode</div>
             </div>
           </article>
 
@@ -89,8 +93,8 @@ export default function MarketingPricing() {
               Custom
             </div>
             <p className="section-copy mt-4 text-sm">
-              For schools, teams, and larger rollouts that need custom pricing
-              or setup help.
+              For schools, teams, and larger rollouts that want structured
+              onboarding, support, and a smoother path to adoption.
             </p>
             <Link
               href="#contact"
@@ -108,7 +112,7 @@ export default function MarketingPricing() {
         </div>
 
         <div className="surface-card mt-10 overflow-x-auto rounded-[1.8rem] p-4 text-left md:p-6">
-          <table className="w-full min-w-[720px] border-collapse text-sm">
+          <table className="w-full min-w-[760px] border-collapse text-sm">
             <thead>
               <tr>
                 <th className="border-b border-indigo-glow px-4 py-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-muted">
