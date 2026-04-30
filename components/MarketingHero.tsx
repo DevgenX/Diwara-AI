@@ -1,210 +1,164 @@
-import StudyBuddyCursorTriangle from "@/components/StudyBuddyCursorTriangle";
-import Link from "next/link";
+'use client';
+import { useRef } from 'react';
+import { motion } from 'motion/react';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import BlurText from './BlurText';
+import MarketingWizardRobotBackground from './MarketingWizardRobotBackground';
 
-const highlightItems = [
-  "Talk once, skip repetitive clicks",
-  "Move through reading and browsing faster",
-  "Turn research and homework into guided flow",
-  "Save the setup and replay it later",
-];
+const blurIn = (delay: number) => ({
+  initial: false,
+  animate: {
+    filter: ['blur(10px)', 'blur(0px)'],
+    opacity: [0, 1],
+    y: [20, 0],
+  },
+  transition: { delay, duration: 0.6, ease: 'easeOut' as const },
+});
 
-const actionSteps = [
-  "Launch the right app",
-  "Find the right screen",
-  "Complete the next step for you",
-  "Pause when approval matters",
-];
-
-const modeChips = [
-  "Research mode",
-  "Homework help",
-  "Coding practice",
-  "Flashcard review",
-  "Exam mode",
-  "Session replay",
+const aiNodes = [
+  { left: '8%', top: '18%', size: 0.65, duration: 16, delay: 0, x: [0, 20, -12, 4, 0], y: [0, -20, 8, 4, 0] },
+  { left: '18%', top: '62%', size: 0.55, duration: 18, delay: 1.2, x: [0, -14, 12, 0], y: [0, 8, -10, 4, 0] },
+  { left: '28%', top: '38%', size: 0.45, duration: 20, delay: 0.6, x: [0, 18, -10, 3, 0], y: [0, -12, 16, -8, 0] },
+  { left: '41%', top: '20%', size: 0.55, duration: 17, delay: 1.8, x: [0, 12, -14, 8, 0], y: [0, -16, 10, -4, 0] },
+  { left: '54%', top: '58%', size: 0.72, duration: 22, delay: 2.2, x: [0, -16, 9, 14, 0], y: [0, 10, -14, 6, 0] },
+  { left: '66%', top: '28%', size: 0.5, duration: 19, delay: 0.3, x: [0, -12, 16, -8, 0], y: [0, -8, 11, -3, 0] },
+  { left: '74%', top: '70%', size: 0.58, duration: 21, delay: 0.9, x: [0, 10, -18, 6, 0], y: [0, 14, -6, 2, 0] },
+  { left: '82%', top: '34%', size: 0.5, duration: 23, delay: 1.6, x: [0, -18, 6, 10, 0], y: [0, -10, 14, -8, 0] },
+  { left: '91%', top: '14%', size: 0.42, duration: 20, delay: 0.5, x: [0, 8, -9, 4, 0], y: [0, -16, 10, -2, 0] },
+  { left: '12%', top: '90%', size: 0.6, duration: 24, delay: 0.8, x: [0, 14, -8, 0], y: [0, -18, 12, 0] },
 ];
 
 export default function MarketingHero() {
+  const heroRef = useRef<HTMLElement>(null);
+
   return (
-    <section className="section-shell relative overflow-hidden px-6 pb-24 pt-32 md:px-10 md:pb-28 md:pt-36">
-      <div className="subtle-glow left-[8%] top-28 h-28 w-28 bg-accent/20" />
-      <div className="subtle-glow right-[10%] top-44 h-32 w-32 bg-accent3/15" />
+    <section ref={heroRef} className="relative min-h-[820px] overflow-hidden md:min-h-[1000px]">
+      <MarketingWizardRobotBackground targetRef={heroRef} />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(rgba(34,211,238,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.055)_1px,transparent_1px)] bg-[size:70px_70px]" />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 opacity-45"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 2px 2px, rgba(34,211,238,0.2) 0 1px, transparent 1px)',
+          backgroundSize: '72px 72px',
+          mixBlendMode: 'screen',
+        }}
+        animate={{
+          backgroundPosition: ['0% 0%', '-14% 14%', '10% 2%', '0% 0%'],
+        }}
+        transition={{
+          duration: 42,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      />
+      <div className="pointer-events-none absolute inset-0 z-0">
+        {aiNodes.map((node, index) => (
+          <motion.span
+            key={node.left + node.top + index}
+            className="absolute rounded-full bg-[#22d3ee]/80 shadow-[0_0_16px_rgba(34,211,238,0.55)]"
+            style={{
+              left: node.left,
+              top: node.top,
+              width: `${node.size}rem`,
+              height: `${node.size}rem`,
+              opacity: 0.15,
+            }}
+            animate={{
+              x: node.x,
+              y: node.y,
+              opacity: [0.08, 0.35, 0.18, 0.3, 0.1],
+              scale: [1, 1.14, 0.88, 1.08, 1],
+            }}
+            transition={{
+              duration: node.duration,
+              repeat: Infinity,
+              delay: node.delay,
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
+      </div>
+      <motion.div
+        aria-hidden="true"
+        className="absolute left-1/2 top-[28%] z-0 h-[360px] w-[92vw] -translate-x-1/2 rounded-full bg-[#22d3ee]/14 blur-3xl md:h-[520px] md:w-[820px]"
+        animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.55, 0.35] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="absolute left-[8%] top-[46%] z-0 h-40 w-40 rounded-full bg-[#fbbf24]/12 blur-3xl md:left-[18%] md:h-48 md:w-48"
+        animate={{ y: [0, -24, 0], opacity: [0.25, 0.5, 0.25] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/images/hero_bg.jpg"
+        className="absolute left-0 z-0 h-auto w-full object-contain opacity-60"
+        style={{ top: '20%' }}
+      >
+        <source src="/videos/hero_bg.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 z-0 bg-[#050b14]/50" />
+      <div
+        className="absolute bottom-0 left-0 right-0 z-0 pointer-events-none"
+        style={{ height: 300, background: 'linear-gradient(to bottom, transparent, #050b14)' }}
+      />
 
-      <div className="mx-auto grid max-w-7xl gap-12 xl:grid-cols-[1.02fr_0.98fr] xl:items-center">
-        <div>
-          <div className="info-pill mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-accent2">
-            <span className="h-2 w-2 rounded-full bg-accent animate-pulse2" />
-            AI help that keeps your day moving
-          </div>
+      <div className="relative z-10 flex min-h-[820px] flex-col items-center px-4 text-center sm:px-6 md:min-h-[1000px]" style={{ paddingTop: 150 }}>
+        <motion.div {...blurIn(0.4)} className="mb-8 flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-2 rounded-full px-1 py-1 liquid-glass">
+          <span className="rounded-full bg-[#22d3ee] px-3 py-1 text-xs font-semibold text-[#050b14]">Now in beta</span>
+          <span className="px-2 pb-1 font-body text-xs text-white/70 sm:pb-0 sm:pr-3">AI help that keeps your day moving.</span>
+        </motion.div>
 
-          <h1 className="max-w-4xl text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl md:text-6xl xl:text-7xl">
-            Work Smarter,
-            <br />
-            <span className="text-gradient">Not Harder.</span>
-          </h1>
+        <BlurText
+          text="Work Smarter, Not Harder"
+          as="h1"
+          delay={100}
+          className="mb-6 max-w-[22rem] text-4xl font-bold leading-[0.9] text-white font-heading sm:max-w-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+        />
 
-          <p className="section-copy mt-6 max-w-2xl text-base sm:text-lg">
-            Diwara AI helps with the small tasks that quietly eat your day.
-            Ask questions, move around faster, automate repetitive actions,
-            highlight what matters, research a topic, walk through homework,
-            run a study session, and come back to the exact setup when you need
-            it again.
-          </p>
+        <motion.p {...blurIn(0.8)} className="mb-6 w-full max-w-[22rem] text-sm font-light leading-relaxed text-white/60 font-body sm:max-w-xl md:text-base">
+          Diwara is a desktop AI companion that can act on your computer, navigate instantly, annotate the screen,
+          research, run flashcard sessions, start practice exams, save presets, and replay study sessions.
+        </motion.p>
 
-          <div className="mt-5 max-w-2xl text-sm font-medium text-[#cfe0f4] sm:text-base">
-            One assistant for study, work, and the in-between tasks that slow
-            everything down.
-          </div>
+        <motion.div {...blurIn(0.95)} className="mb-8 flex w-full max-w-[22rem] flex-wrap justify-center gap-2 sm:max-w-2xl">
+          {[
+            'Talk once, skip repetitive clicks',
+            'Move through reading and browsing faster',
+            'Turn research into a guided flow',
+            'Save the setup. Replay it later.',
+          ].map((pill) => (
+            <span key={pill} className="max-w-full rounded-full px-3 py-1.5 text-center text-xs text-white/70 liquid-glass font-body">
+              {pill}
+            </span>
+          ))}
+        </motion.div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="#pricing"
-              className="button-primary inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition-all sm:w-auto"
-            >
-              Start free
-            </Link>
-            <Link
-              href="#features"
-              className="button-secondary inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all sm:w-auto"
-            >
-              Explore features
-            </Link>
-          </div>
+        <motion.div {...blurIn(1.1)} className="flex flex-wrap items-center justify-center gap-4">
+          <a href="#pricing" className="flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-white transition-colors liquid-glass-strong hover:bg-[#22d3ee]/10">
+            Start free <ArrowUpRight size={16} />
+          </a>
+          <a href="#features" className="flex items-center gap-1.5 text-sm text-white/60 transition-colors font-body hover:text-white">
+            Explore features <ChevronDown size={15} />
+          </a>
+        </motion.div>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            {highlightItems.map((item) => (
-              <div
-                key={item}
-                className="info-pill rounded-full px-4 py-2 text-sm font-medium"
-              >
-                {item}
-              </div>
+        <div className="mt-auto flex flex-col items-center gap-4 pb-8 pt-16">
+          <span className="rounded-full px-4 py-1.5 text-xs text-white/40 liquid-glass font-body">
+            Trusted by students and teams at
+          </span>
+          <div className="flex max-w-full flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-8 md:gap-x-14">
+            {['MIT', 'Stanford', 'YC', 'Notion', 'Linear'].map((name) => (
+              <span key={name} className="text-lg font-semibold text-white/30 font-heading sm:text-xl md:text-2xl">
+                {name}
+              </span>
             ))}
-          </div>
-        </div>
-
-        <div className="surface-panel relative overflow-hidden rounded-[2rem] p-4 sm:p-5">
-          <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <p className="tiny-kicker">Diwara AI in action</p>
-              <h2 className="mt-1 text-xl font-bold text-white sm:text-2xl">
-                Ask once. Watch the busywork disappear.
-              </h2>
-              <p className="section-copy mt-2 max-w-xl text-sm">
-                Diwara can guide, act, and keep track of the flow so you spend
-                less time repeating steps and more time finishing what matters.
-              </p>
-            </div>
-            <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted">
-              desktop runtime
-            </div>
-          </div>
-
-          <div className="monitor-grid relative overflow-hidden rounded-[1.5rem] border border-white/6 p-3 sm:p-4">
-            <div className="grid gap-4 xl:min-h-[26rem] xl:grid-cols-[1.08fr_0.92fr] xl:items-start">
-              <div className="relative overflow-hidden rounded-[1.4rem] border border-white/8 bg-[#0b1524]/85 p-4">
-                <div className="mb-3 flex items-center justify-between gap-3">
-                  <div className="h-2.5 w-28 rounded-full bg-accent/25" />
-                  <div className="rounded-full border border-accent/20 bg-accent/10 px-2.5 py-1 text-[10px] font-semibold text-accent2">
-                    Task mode
-                  </div>
-                </div>
-
-                <div className="prompt-bubble mb-4 rounded-2xl rounded-tr-md px-3 py-3 text-xs leading-6 text-white/90 sm:max-w-[82%] sm:text-sm">
-                  Open Chrome, research mitosis, and save my notes setup for
-                  tonight.
-                </div>
-
-                <div className="space-y-2.5">
-                  {actionSteps.map((step) => (
-                    <div
-                      key={step}
-                      className="flex items-center gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-3 py-2.5"
-                    >
-                      <span className="h-2 w-2 rounded-full bg-accent" />
-                      <span className="text-xs text-white/75 sm:text-sm">
-                        {step}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-4 rounded-2xl border border-accent3/20 bg-accent3/10 px-3 py-2 text-xs text-[#f7d48a] sm:text-sm">
-                  Safety checks step in before sensitive actions, so the flow
-                  stays helpful without feeling risky.
-                </div>
-
-                <svg
-                  className="pointer-events-none absolute inset-0 hidden h-full w-full xl:block"
-                  viewBox="0 0 520 420"
-                  aria-hidden="true"
-                >
-                  <path
-                    className="flight-path"
-                    d="M160 290C210 250 265 220 316 180C350 154 390 130 428 118"
-                  />
-                </svg>
-
-                <StudyBuddyCursorTriangle className="absolute left-[60%] top-[56%] hidden h-10 w-9 -rotate-[18deg] xl:block" />
-              </div>
-
-              <div className="flex flex-col gap-4">
-                <div className="rounded-[1.4rem] border border-white/8 bg-[#08111d]/88 p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-[#f87171]" />
-                    <span className="h-2 w-2 rounded-full bg-[#fbbf24]" />
-                    <span className="h-2 w-2 rounded-full bg-[#34d399]" />
-                  </div>
-                  <div className="space-y-3">
-                    <div className="prompt-bubble rounded-2xl rounded-tr-md px-3 py-2 text-xs leading-6 text-white/90 sm:text-sm">
-                      Quiz me after the research and keep the setup ready for
-                      tomorrow.
-                    </div>
-                    <div className="prompt-bubble rounded-2xl rounded-tl-md px-3 py-2 text-xs leading-6 text-accent2 sm:text-sm">
-                      Notes saved. Study layout ready. Flashcards and exam mode
-                      are one command away.
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                  {modeChips.map((mode, index) => (
-                    <div
-                      key={mode}
-                      className={`rounded-2xl border px-4 py-3 text-sm ${
-                        index < 2
-                          ? "border-accent/20 bg-accent/10 text-accent2"
-                          : "border-white/8 bg-white/[0.03] text-white/75"
-                      }`}
-                    >
-                      {mode}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3">
-                <div className="tiny-kicker">Simplify</div>
-                <p className="mt-1 text-sm text-white/85">
-                  Offload repetitive steps that usually break focus.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3">
-                <div className="tiny-kicker">Stay in flow</div>
-                <p className="mt-1 text-sm text-white/85">
-                  Keep reading, studying, and building without tab hopping.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3">
-                <div className="tiny-kicker">Come back faster</div>
-                <p className="mt-1 text-sm text-white/85">
-                  Reuse presets, replays, and saved routines whenever you need
-                  them.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

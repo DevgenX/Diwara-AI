@@ -15,8 +15,10 @@ const config: Config = {
         muted: "#97a9c2",
       },
       fontFamily: {
-        sans: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
+        heading: ["var(--font-space-grotesk)", "sans-serif"],
+        body: ["var(--font-space-grotesk)", "sans-serif"],
         mono: ["var(--font-ibm-plex-mono)", "monospace"],
+        sans: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
       },
       animation: {
         pulse2: "pulse2 2s ease-in-out infinite",

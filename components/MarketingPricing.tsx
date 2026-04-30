@@ -1,153 +1,92 @@
-import Link from "next/link";
+'use client';
+import { Check } from 'lucide-react';
+import BlurText from './BlurText';
+import { motion } from 'motion/react';
 
-const comparisonRows = [
-  { label: "Questions each day", free: "20", pro: "Unlimited", enterprise: "Unlimited" },
-  { label: "Voice help", free: "5 min/day", pro: "Unlimited", enterprise: "Unlimited" },
-  { label: "Copy and explain", free: true, pro: true, enterprise: true },
-  { label: "Voice-commanded actions", free: false, pro: true, enterprise: true },
-  { label: "Instant navigation + annotation", free: false, pro: true, enterprise: true },
-  { label: "Research, homework, and coding modes", free: false, pro: true, enterprise: true },
-  { label: "Presets, replay, and multi-monitor tools", free: false, pro: true, enterprise: true },
-  { label: "Priority support", free: false, pro: true, enterprise: true },
-  { label: "Team rollout help", free: false, pro: false, enterprise: true },
+const tiers = [
+  {
+    name: 'Free',
+    price: '$0',
+    period: '/month',
+    tag: 'Perfect for trying the flow',
+    popular: false,
+    features: ['20 questions each day', '5 minutes of voice help each day', 'Copy and explain', 'Browser support'],
+    cta: 'Start free',
+    ctaClass: 'liquid-glass-strong rounded-full w-full py-2.5 text-white font-semibold',
+  },
+  {
+    name: 'Pro',
+    price: '$12',
+    period: '/month',
+    tag: 'Built for people who want less friction every day',
+    popular: true,
+    features: ['Unlimited questions', 'Unlimited voice help', 'Desktop actions and instant navigation', 'Research / homework / coding / flashcards', 'Presets, replay, and exam mode', 'Priority support'],
+    cta: 'Get Pro',
+    ctaClass: 'bg-[#22d3ee] text-[#050b14] rounded-full w-full py-2.5 font-semibold hover:bg-[#67e8f9] transition-colors',
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    tag: 'For schools, teams, and larger rollouts',
+    popular: false,
+    features: ['Everything in Pro', 'Custom pricing', 'Team onboarding help', 'Custom rollout planning'],
+    cta: 'Contact us',
+    ctaClass: 'liquid-glass-strong rounded-full w-full py-2.5 text-white font-semibold',
+  },
 ];
-
-function Cell({ value }: { value: boolean | string }) {
-  if (value === true) return <span className="text-emerald-400">Yes</span>;
-  if (value === false) return <span className="text-red-300">No</span>;
-  return <span className="text-[#d8e7fa]">{value}</span>;
-}
 
 export default function MarketingPricing() {
   return (
-    <section id="pricing" className="section-shell px-6 py-24 md:px-10">
-      <div className="mx-auto max-w-7xl text-center">
-        <p className="eyebrow mb-4">Pricing</p>
-        <h2 className="text-3xl font-extrabold tracking-[-0.04em] text-white md:text-5xl">
-          Start simple. Upgrade when the time savings matter.
-        </h2>
-        <p className="section-copy mx-auto mt-4 max-w-2xl text-base sm:text-lg">
-          Diwara is useful on day one, and it grows with the way you work. Use
-          the free plan to get started, then unlock deeper automation,
-          structured workflows, and faster repeatability when you are ready.
-        </p>
-
-        <div className="mt-14 grid gap-6 text-left lg:grid-cols-3">
-          <article className="surface-card rounded-[1.8rem] p-8">
-            <p className="tiny-kicker">Free</p>
-            <div className="mt-3 text-5xl font-black tracking-tight text-white">
-              $0
-              <span className="ml-2 text-base font-medium text-muted">/mo</span>
-            </div>
-            <p className="section-copy mt-4 text-sm">
-              Perfect for trying the flow and getting quick help without
-              changing your routine.
-            </p>
-            <Link
-              href="#contact"
-              className="button-secondary mt-7 inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold transition-all"
-            >
-              Start free
-            </Link>
-            <div className="mt-7 space-y-3 text-sm text-white/90">
-              <div>20 questions each day</div>
-              <div>5 minutes of voice help each day</div>
-              <div>Copy and explain</div>
-              <div>Browser support</div>
-            </div>
-          </article>
-
-          <article className="surface-panel rounded-[1.8rem] p-8">
-            <div className="flex items-center justify-between gap-3">
-              <p className="tiny-kicker">Pro</p>
-              <div className="rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent2">
-                Most popular
-              </div>
-            </div>
-            <div className="mt-3 text-5xl font-black tracking-tight text-white">
-              $12
-              <span className="ml-2 text-base font-medium text-muted">/mo</span>
-            </div>
-            <p className="section-copy mt-4 text-sm">
-              Built for people who want less friction every day, not just
-              better answers once in a while.
-            </p>
-            <Link
-              href="#contact"
-              className="button-primary mt-7 inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-sm font-bold transition-all"
-            >
-              Upgrade to Pro
-            </Link>
-            <div className="mt-7 space-y-3 text-sm text-white/90">
-              <div>Unlimited questions</div>
-              <div>Unlimited voice help</div>
-              <div>Desktop actions and instant navigation</div>
-              <div>Research, homework, coding, and flashcards</div>
-              <div>Presets, replay, and exam mode</div>
-            </div>
-          </article>
-
-          <article className="surface-card rounded-[1.8rem] p-8">
-            <p className="tiny-kicker">Enterprise</p>
-            <div className="mt-3 text-5xl font-black tracking-tight text-white">
-              Custom
-            </div>
-            <p className="section-copy mt-4 text-sm">
-              For schools, teams, and larger rollouts that want structured
-              onboarding, support, and a smoother path to adoption.
-            </p>
-            <Link
-              href="#contact"
-              className="button-secondary mt-7 inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold transition-all"
-            >
-              Contact us
-            </Link>
-            <div className="mt-7 space-y-3 text-sm text-white/90">
-              <div>Custom pricing</div>
-              <div>Team onboarding help</div>
-              <div>Priority support</div>
-              <div>Custom rollout planning</div>
-            </div>
-          </article>
+    <section id="pricing" className="bg-[#050b14] px-4 py-24 sm:px-6 md:py-32">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col items-center text-center mb-16">
+          <span className="liquid-glass rounded-full px-3.5 py-1 text-xs font-mono tracking-wide uppercase text-[#22d3ee] mb-6">Pricing</span>
+          <BlurText
+            text="Start simple. Upgrade when the time savings matter."
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[0.9] text-white mb-4 max-w-3xl"
+          />
+          <p className="text-white/50 font-body font-light text-sm md:text-base">Diwara is useful on day one, and it grows with the way you work.</p>
         </div>
 
-        <div className="surface-card mt-10 overflow-x-auto rounded-[1.8rem] p-4 text-left md:p-6">
-          <table className="w-full min-w-[760px] border-collapse text-sm">
-            <thead>
-              <tr>
-                <th className="border-b border-indigo-glow px-4 py-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-muted">
-                  Feature
-                </th>
-                <th className="border-b border-indigo-glow px-4 py-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-muted">
-                  Free
-                </th>
-                <th className="border-b border-indigo-glow px-4 py-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-muted">
-                  Pro
-                </th>
-                <th className="border-b border-indigo-glow px-4 py-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-muted">
-                  Enterprise
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparisonRows.map(({ label, free, pro, enterprise }) => (
-                <tr key={label} className="hover:bg-white/[0.02]">
-                  <td className="border-b border-white/6 px-4 py-3 text-muted">
-                    {label}
-                  </td>
-                  <td className="border-b border-white/6 px-4 py-3">
-                    <Cell value={free} />
-                  </td>
-                  <td className="border-b border-white/6 px-4 py-3">
-                    <Cell value={pro} />
-                  </td>
-                  <td className="border-b border-white/6 px-4 py-3">
-                    <Cell value={enterprise} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="grid gap-6 md:grid-cols-3">
+          {tiers.map((tier, i) => (
+            <motion.div
+              key={tier.name}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: i * 0.1, duration: 0.4 }}
+              className={`liquid-glass relative flex min-h-[430px] flex-col rounded-2xl p-6 sm:p-8 ${
+                tier.popular ? 'ring-1 ring-[#22d3ee]/35 shadow-[0_0_42px_rgba(34,211,238,0.12)]' : ''
+              }`}
+            >
+              <div className="mb-6">
+                <div className="mb-3 flex min-h-8 items-center justify-between gap-3">
+                  <div className="font-heading font-bold text-white text-xl">{tier.name}</div>
+                  {tier.popular && (
+                    <span className="shrink-0 rounded-full border border-[#8ff2ff]/70 bg-[#22d3ee] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#050b14] shadow-[0_0_24px_rgba(34,211,238,0.55)]">
+                      Most Popular
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-baseline gap-0.5 mb-1">
+                  <span className="text-4xl font-heading font-bold text-white">{tier.price}</span>
+                  {tier.period && <span className="text-white/40 text-sm font-body">{tier.period}</span>}
+                </div>
+                <div className="text-white/40 text-xs font-body">{tier.tag}</div>
+              </div>
+              <ul className="flex flex-col gap-3 mb-8 flex-1">
+                {tier.features.map(f => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm font-body text-white/70">
+                    <Check size={15} className="text-[#22d3ee] mt-0.5 shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <button className={`${tier.ctaClass} text-center`}>{tier.cta}</button>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

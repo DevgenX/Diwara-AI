@@ -1,78 +1,60 @@
-"use client";
-
-import BrandMark from "@/components/BrandMark";
-import Link from "next/link";
-import { useState } from "react";
-
-const navItems = [
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#features", label: "Features" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
-];
+'use client';
+import { useState } from 'react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function MarketingNav() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const links = [
+    { href: '#how-it-works', label: 'How it works' },
+    { href: '#features', label: 'Features' },
+    { href: '#pricing', label: 'Pricing' },
+    { href: '#faq', label: 'FAQ' },
+  ];
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-indigo-glow bg-bg/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 md:px-10">
-        <Link
-          href="/"
-          className="flex items-center gap-3 font-extrabold tracking-tight text-white no-underline"
-        >
-          <BrandMark className="h-9 w-9 shrink-0" />
-          <span className="text-[1.02rem]">Diwara AI</span>
-        </Link>
+    <nav className="fixed left-0 right-0 top-3 z-50 px-4 py-3 sm:top-4 sm:px-8 lg:px-16">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2.5">
+          <Image src="/icon.svg" alt="Diwara AI" width={40} height={40} className="h-10 w-10" />
+          <span className="font-heading font-semibold text-white text-sm">Diwara AI</span>
+        </a>
 
-        <div className="hidden items-center gap-7 md:flex">
-          {navItems.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-sm font-medium text-muted transition-colors hover:text-white"
-            >
-              {label}
-            </Link>
+        <div className="hidden md:flex items-center liquid-glass rounded-full px-1.5 py-1 gap-0.5">
+          {links.map(l => (
+            <a key={l.href} href={l.href}
+              className="px-3 py-2 text-sm font-medium text-white/80 font-body hover:text-[#22d3ee] transition-colors rounded-full">
+              {l.label}
+            </a>
           ))}
-          <Link
-            href="#pricing"
-            className="button-primary rounded-full px-4 py-2 text-sm font-semibold transition-all"
-          >
-            Start free
-          </Link>
+          <a href="#pricing"
+            className="flex items-center gap-1 bg-[#22d3ee] text-[#050b14] rounded-full px-3.5 py-1.5 text-sm font-semibold ml-1 hover:bg-[#67e8f9] transition-colors">
+            Start free <ArrowUpRight size={14} />
+          </a>
         </div>
 
         <button
-          className="p-2 text-muted transition-colors hover:text-white md:hidden"
-          onClick={() => setMenuOpen((open) => !open)}
+          onClick={() => setOpen(o => !o)}
+          aria-expanded={open}
           aria-label="Toggle navigation"
+          className="rounded-full p-2 text-white/70 liquid-glass hover:text-white md:hidden"
         >
-          {menuOpen ? "Close" : "Menu"}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {menuOpen && (
-        <div className="border-t border-indigo-glow bg-surface/95 px-6 py-5 md:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col gap-4">
-            {navItems.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="text-sm font-medium text-muted transition-colors hover:text-white"
-                onClick={() => setMenuOpen(false)}
-              >
-                {label}
-              </Link>
-            ))}
-            <Link
-              href="#pricing"
-              className="button-primary inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition-all"
-              onClick={() => setMenuOpen(false)}
-            >
-              Start free
-            </Link>
-          </div>
+      {open && (
+        <div className="mx-auto mt-2 flex max-w-6xl flex-col gap-3 rounded-2xl px-5 py-4 liquid-glass md:hidden">
+          {links.map(l => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+              className="text-white/80 font-body text-sm py-1 hover:text-[#22d3ee] transition-colors">
+              {l.label}
+            </a>
+          ))}
+          <a href="#pricing" onClick={() => setOpen(false)}
+            className="flex items-center justify-center gap-1 bg-[#22d3ee] text-[#050b14] rounded-full py-2.5 text-sm font-semibold mt-1">
+            Start free <ArrowUpRight size={14} />
+          </a>
         </div>
       )}
     </nav>
